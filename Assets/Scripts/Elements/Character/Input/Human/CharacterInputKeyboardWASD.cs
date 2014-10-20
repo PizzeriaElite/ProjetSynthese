@@ -7,8 +7,8 @@ public class CharacterInputKeyboardWASD : CharacterInput
 	private const KeyCode UP = KeyCode.W;
 	private const KeyCode LEFT = KeyCode.A;
 	private const KeyCode RIGHT = KeyCode.D;
-	private const KeyCode JUMP = KeyCode.W;
-	private const KeyCode ACTION = KeyCode.Space;
+	private const KeyCode JUMP = KeyCode.Space;
+	private const KeyCode ACTION = KeyCode.Mouse0;
 
 	/* 
 	 * THE REMANING OF THE FILE IS A COPY OF CHARACTERINPUTPCARROWS
@@ -20,9 +20,8 @@ public class CharacterInputKeyboardWASD : CharacterInput
 	{
 		UpdateHorizontal();
 		UpdateVertical();
-		UpdateDebugFunctions();
 
-		jump       = Input.GetKey(JUMP);
+		jump       = Input.GetKeyDown(JUMP);
 		action     = Input.GetKey(ACTION);
 	}
 
@@ -78,11 +77,4 @@ public class CharacterInputKeyboardWASD : CharacterInput
 		}
 	}
 	#endregion
-
-	private void UpdateDebugFunctions()
-	{
-		if(Input.GetKeyDown("f")) {
-			this.character.physics.debugNoClip = !this.character.physics.debugNoClip;
-		}
-	}
 }

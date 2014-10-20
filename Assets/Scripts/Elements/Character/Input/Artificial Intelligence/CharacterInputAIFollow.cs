@@ -133,7 +133,6 @@ public class CharacterInputAIFollow : CharacterInput
 	/// </summary>
 	void FollowPlayerByDirection()
 	{
-		Debug.Log (FindPlayerDirectionFromEnemy().ToString());
 		if (this.FindPlayerDistanceFromEnemy() <= MIN_DISTANCE)
 		{
 			this.gameObject.rigidbody.AddForce(new Vector3(FindPlayerDirectionFromEnemy().x,0,0) * ENEMY_SPEED);

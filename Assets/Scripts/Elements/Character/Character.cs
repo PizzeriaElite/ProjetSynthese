@@ -17,6 +17,8 @@ public class Character : Element
 	[System.NonSerialized] public CharacterPhysics physics;
 	[System.NonSerialized] public CharacterInput input;
 	[System.NonSerialized] public CharacterMove move;
+	[System.NonSerialized] public CharacterJump jump;
+	[System.NonSerialized] public CharacterGroundDetection groundDetector;
 	#endregion
 
 	public Transform visual;
@@ -38,6 +40,8 @@ public class Character : Element
 		physics = GetComponent<CharacterPhysics>();
 		input = GetComponent<CharacterInput>();
 		move  = GetComponent<CharacterMove>();
+		jump  = GetComponent<CharacterJump>();
+		groundDetector  = GetComponent<CharacterGroundDetection>();
 	}
 	
 	protected override  void Start()
