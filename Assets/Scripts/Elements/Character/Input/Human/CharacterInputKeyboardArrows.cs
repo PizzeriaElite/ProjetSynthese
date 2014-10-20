@@ -69,5 +69,5 @@ public class CharacterInputKeyboardArrows : CharacterInput
 				horizontal = 0;
 			}
 		}
-	}
+	}	
 }

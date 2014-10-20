@@ -20,6 +20,7 @@ public class CharacterInputKeyboardWASD : CharacterInput
 	{
 		UpdateHorizontal();
 		UpdateVertical();
+		UpdateDebugFunctions();
 
 		jump       = Input.GetKey(JUMP);
 		action     = Input.GetKey(ACTION);
@@ -77,4 +78,11 @@ public class CharacterInputKeyboardWASD : CharacterInput
 		}
 	}
 	#endregion
+
+	private void UpdateDebugFunctions()
+	{
+		if(Input.GetKeyDown("f")) {
+			this.character.physics.debugNoClip = !this.character.physics.debugNoClip;
+		}
+	}
 }
