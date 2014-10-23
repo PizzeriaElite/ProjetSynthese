@@ -4,7 +4,8 @@ using System.Collections;
 public class AIEscape : State
 {
 	private CharacterInputAIEscape aiEscape;
-	private void Start()
+
+	private void OnEnable()
 	{
 		this.aiEscape = GetComponent<CharacterInputAIEscape>();
 		this.aiEscape.enabled = true;

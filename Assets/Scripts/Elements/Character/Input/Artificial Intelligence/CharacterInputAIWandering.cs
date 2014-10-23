@@ -7,14 +7,15 @@ public class CharacterInputAIWandering : CharacterInput
 	public float MAX_DISTANCE = 5f;
 	public float MIN_DISTANCE = 0.5f;
 
-	private void Start()
+	private void OnEnable()
 	{
 		this.character.input.horizontal = -1;
 	}
 
 	//Code tres rudimentaire a changer
-	private void Update () 
+	private void Update ()
 	{
+		Scene.references.levelAI.platforms.Clear();
 		Mesh mesh = GetComponentInChildren<MeshFilter>().mesh;
 		RaycastHit hit;
 		float dist = 5;

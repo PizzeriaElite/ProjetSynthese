@@ -24,9 +24,6 @@ public class EnemyBehaviour : StateMachineComponentEnemy
 		InitializeComponents();
 		SetDefaultState(State.AIIdle);
 		InitializeTransitions();
-		#if DEBUG
-			DynamicTransitions(State.AIIdle,State.AIEscape);
-		#endif
 	}
 
 	private void InitializeComponents()
@@ -40,8 +37,7 @@ public class EnemyBehaviour : StateMachineComponentEnemy
 	private void InitializeTransitions()
 	{
 		#if DEBUG
-		//AddTransition(State.AIIdle, State.AIWandering, 
-		              //() => { return Input.GetKey("1"); });
+
 		#endif
 	}
 

@@ -4,7 +4,8 @@ using System.Collections;
 public class AIWandering : State
 {
 	private CharacterInputAIWandering aiWandering;
-	private void Start()
+
+	private void OnEnable()
 	{
 		this.aiWandering = GetComponent<CharacterInputAIWandering>();
 		this.aiWandering.enabled = true;

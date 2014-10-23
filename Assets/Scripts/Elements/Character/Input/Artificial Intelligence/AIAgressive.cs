@@ -5,7 +5,7 @@ public class AIAgressive : State
 {
 	private CharacterInputAIFollow aiFollow;
 
-	private void Start()
+	private void OnEnable()
 	{
 		this.aiFollow = GetComponent<CharacterInputAIFollow>();
 		this.aiFollow.enabled = true;

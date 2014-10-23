@@ -8,6 +8,13 @@ public class CharacterPhysics : CharacterCapacity
 	[System.NonSerialized] public bool isGrounded;
 	[System.NonSerialized] public bool isClimbing;
 
+	public void NoClipActivation(bool active)
+	{
+		this.debugNoClip = active;
+		this.rigidbody.collider.enabled = !active;
+		this.rigidbody.useGravity = !active;
+	}
+
 	void OnTriggerStay(Collider other)
 	{
 		Debug.Log (other.tag);

@@ -3,10 +3,21 @@ using System.Collections;
 
 public class AIIdle : State
 {
-	public float speed = 5;
+	private CharacterInputAIIdle aiIdle;
 
+	private void OnEnable()
+	{
+		this.aiIdle = GetComponent<CharacterInputAIIdle>();
+		this.aiIdle.enabled = true;
+	}
+	
 	private void Update () 
 	{
-
+		
+	}
+	
+	private void OnDisable()
+	{
+		this.aiIdle.enabled = false;
 	}
 }
