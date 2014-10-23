@@ -1,17 +1,17 @@
 using UnityEngine;
 using System.Collections;
 
-public class CharacterInputAIFollow : CharacterInput
+public class CharacterInputAIEscape : CharacterInput
 {
 	public int ENEMY_SPEED = 10;
 	public float MAX_DISTANCE = 5f;
 	public float MIN_DISTANCE = 0.5f;
-
+	
 	private void Update () 
 	{
-		this.FollowPlayerByDirection();
+		this.EscapePlayerByDirection();
 	}
-
+	
 	/// <summary>
 	/// Finds the player position x.
 	/// </summary>
@@ -20,7 +20,7 @@ public class CharacterInputAIFollow : CharacterInput
 	{
 		return GameObject.FindWithTag("Player").transform.position.x;
 	}
-
+	
 	/// <summary>
 	/// Finds the player position y.
 	/// </summary>
@@ -29,7 +29,7 @@ public class CharacterInputAIFollow : CharacterInput
 	{
 		return GameObject.FindWithTag("Player").transform.position.y;
 	}
-
+	
 	/// <summary>
 	/// Finds the player's direction from the current enemy.
 	/// </summary>
@@ -40,7 +40,7 @@ public class CharacterInputAIFollow : CharacterInput
 		direction.Normalize();
 		return direction;
 	}
-
+	
 	/// <summary>
 	/// Finds the player's distance from the current enemy.
 	/// </summary>
@@ -58,7 +58,7 @@ public class CharacterInputAIFollow : CharacterInput
 	{
 		float playerPositionY = this.FindPlayerPositionY();
 		float enemyPositionY = this.transform.position.y;
-
+		
 		if(playerPositionY > enemyPositionY)
 		{
 			return true;
@@ -68,7 +68,7 @@ public class CharacterInputAIFollow : CharacterInput
 			return false;
 		}
 	}
-
+	
 	/// <summary>
 	/// Identifies if the player is under the current enemy.
 	/// </summary>
@@ -87,7 +87,7 @@ public class CharacterInputAIFollow : CharacterInput
 			return false;
 		}
 	}
-
+	
 	/// <summary>
 	/// Identifies if the player is to the left of the current enemy.
 	/// </summary>
@@ -106,7 +106,7 @@ public class CharacterInputAIFollow : CharacterInput
 			return false;
 		}
 	}
-
+	
 	/// <summary>
 	/// Identifies if the player is to the right of the current enemy.
 	/// </summary>
@@ -126,29 +126,20 @@ public class CharacterInputAIFollow : CharacterInput
 		}
 	}
 
-	/// <summary>
-	/// Follows the player with its direction.
-	/// </summary>
-	public void FollowPlayerByDirection()
+	public void EscapePlayerByDirection()
 	{
 		float currentDistance = this.FindPlayerDistanceFromEnemy();
 		float currentDistanceX = Mathf.Abs(this.FindPlayerPositionX() - this.transform.position.x);
 
-		if (currentDistance <= MAX_DISTANCE && currentDistanceX >= MIN_DISTANCE)
+		if(this.isPlayerLeft())
 		{
-			if(this.isPlayerLeft())
-			{
-				this.horizontal = -1;
-			}
-			else if(this.isPlayerRight())
-			{
-				this.horizontal = 1;
-			}
+			this.character.input.horizontal = 1;
 		}
-		else
+		else if(this.isPlayerRight())
 		{
-			this.horizontal = 0;
+			this.character.input.horizontal = -1;
 		}
 	}
-
+	
+	
 }
